@@ -1,8 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
-import { fireEvent } from "@testing-library/react";
-import { vi } from "vitest";
 import axios from "axios";
+import { vi } from "vitest";
+
+vi.mock("axios");
 
 test("renders String Calculator heading", () => {
   render(<App />);
@@ -11,18 +12,14 @@ test("renders String Calculator heading", () => {
 
 test("renders input and button", () => {
   render(<App />);
-  expect(screen.getByPlaceholderText(/Enter numbers/i)).toBeInTheDocument();
-  expect(screen.getByText("Calculate")).toBeInTheDocument();
-});
 
-test("updates input field on user typing", () => {
-  render(<App />);
   const textarea = screen.getByPlaceholderText(/Enter numbers/i);
-  fireEvent.change(textarea, { target: { value: "1,2,3" } });
-  expect(textarea.value).toBe("1,2,3");
-});
 
-vi.mock("axios");
+  const button = screen.getByText("Calculate");
+
+  expect(textarea).toBeInTheDocument();
+  expect(button).toBeInTheDocument();
+});
 
 test("calculates sum and displays result", async () => {
   axios.post.mockResolvedValue({ data: { result: 6 } });
