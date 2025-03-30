@@ -1,5 +1,18 @@
 import { useState } from "react";
 
+import axios from "axios";
+
+const API_URL = "https://string-calculator-m3iv.onrender.com/calculate";
+
+const calculateSum = async () => {
+  try {
+    const response = await axios.post(API_URL, { numbers: input });
+    console.log("Result:", response.data.result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 function App() {
   const [input, setInput] = useState("");
 
