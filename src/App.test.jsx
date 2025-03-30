@@ -36,3 +36,16 @@ test("calculates sum and displays result", async () => {
 
   expect(await screen.findByText("Result: 6")).toBeInTheDocument();
 });
+
+test("shows error when API call fails", async () => {
+  axios.post.mockRejectedValue({ response: { data: { error: "Invalid input" } } });
+
+  render(<App />);
+  const textarea = screen.getByPlaceholderText(/Enter numbers/i);
+  const button = screen.getByText("Calculate");
+
+  fireEvent.change(textarea, { target: { value: "abc" } });
+  fireEvent.click(button);
+
+  expect(await screen.findByText("Invalid input")).toBeInTheDocument();
+});
