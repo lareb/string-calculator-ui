@@ -4,12 +4,17 @@ import axios from "axios";
 
 const API_URL = "https://string-calculator-m3iv.onrender.com/calculate";
 
+const [error, setError] = useState(null);
+
 const calculateSum = async () => {
+  setError(null);
+  setResult(null);
+
   try {
     const response = await axios.post(API_URL, { numbers: input });
-    console.log("Result:", response.data.result);
-  } catch (error) {
-    console.error("Error:", error);
+    setResult(response.data.result);
+  } catch (err) {
+    setError(err.response?.data?.error || "Something went wrong");
   }
 };
 
