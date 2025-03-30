@@ -1,12 +1,86 @@
-# React + Vite
+# 🎯 String Calculator UI (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **frontend** for the **String Calculator API**, built using **React**.  
+It allows users to enter numbers, send them to the backend API, and display the calculated sum.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
+✅ User-friendly UI  
+✅ Sends numbers to the **Sinatra API** (`/calculate`)  
+✅ Handles **errors** (invalid input, negative numbers)  
+✅ Styled with **pure CSS** (no Tailwind)  
+✅ **Deployed on Vercel** for easy access  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Setup Instructions (Local Development)
+
+### **1️⃣ Prerequisites**
+Ensure you have:
+- **Node.js** (>= 16)
+- **npm** or **Yarn** installed
+
+### **2️⃣ Clone the Repository**
+```sh
+git clone https://github.com/lareb/string-calculator-ui.git
+cd string-calculator-ui
+```
+
+### **3️⃣ Install Dependencies**
+```
+npm install
+```
+### **4️⃣ Run the Development Server**
+```
+npm run dev
+```
+Your app will be available at:
+➡️ http://localhost:5173
+
+### **5️⃣ Run Test Case**
+```
+npm run test
+```
+
+## 📡 API Integration
+The app communicates with the Sinatra backend hosted on Render.
+If running locally, update API_URL in src/App.jsx:
+```
+const API_URL = "http://localhost:4567/calculate"; // Local Backend
+```
+For production, use:
+```
+const API_URL = "https://string-calculator-m3iv.onrender.com/calculate"; // Deployed Backend
+```
+## 🖥️ Deployment (Vercel)
+The app is deployed on Vercel.
+
+Deploying on Vercel
+#### **Install Vercel CLI:**
+```
+npm install -g vercel
+```
+#### **Deploy:**
+```
+vercel
+```
+#### Follow the instructions and get your Live URL (e.g., https://string-calculator-ui-sigma.vercel.app).
+
+## 📜 Project Structure
+```
+/string-calculator-ui
+│── src/
+│   ├── App.jsx         # Main component
+│   ├── App.css         # Styles
+│   ├── index.jsx       # Entry point
+│── public/             # Static assets
+│── package.json        # Dependencies
+│── README.md           # Documentation
+```
+
+## 🤝 Contributing
+Feel free to submit pull requests or report issues.
+
+## 📝 License
+This project is licensed under the MIT License.
